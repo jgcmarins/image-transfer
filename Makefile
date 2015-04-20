@@ -7,20 +7,24 @@
 # 
 ##
 
-all: clean compile jarserver jarclient
+all: clean compileserver compileclient jarserver jarclient
 clean:
-	rm -rf build
-	mkdir build
+	rm -rf buildserver
+	mkdir buildserver
+	rm -rf buildclient
+	mkdir buildclient
 	rm -rf package
 	mkdir package
-compile:
-	javac -cp build src/image/transfer/**/*.java -d build
+compileserver:
+	javac -cp buildserver src/image/transfer/server/*.java -d buildserver
+compileclient:
+	javac -cp buildclient src/image/transfer/client/*.java -d buildclient
 jarserver:
-	echo "Main-Class: image.transfer.server.ImageTransferServer" > build/manifest.txt
-	jar cvfm package/image-transf-server.jar build/manifest.txt -C build .
+	echo "Main-Class: image.transfer.server.ImageTransferServer" > buildserver/manifest.txt
+	jar cvfm package/image-transf-server.jar buildserver/manifest.txt -C buildserver .
 jarclient:
-	echo "Main-Class: image.transfer.client.ImageTransferClient" > build/manifest.txt
-	jar cvfm package/image-transf-client.jar build/manifest.txt -C build .
+	echo "Main-Class: image.transfer.client.ImageTransferClient" > buildclient/manifest.txt
+	jar cvfm package/image-transf-client.jar buildclient/manifest.txt -C buildclient .
 runserver:
 	java -jar package/image-transf-server.jar
 runclient:
