@@ -9,6 +9,8 @@
 
 all: clean compileserver compileclient jarserver jarclient
 clean:
+	rm -rf clientside
+	mkdir clientside
 	rm -rf buildserver
 	mkdir buildserver
 	rm -rf buildclient
