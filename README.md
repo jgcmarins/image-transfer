@@ -2,7 +2,7 @@
 A java server-client sample of image transfer (from server to client).
 
 ## How to use
-### Clean, compile and generate package
+### Compile and generate package
 ```
 make
 ```
