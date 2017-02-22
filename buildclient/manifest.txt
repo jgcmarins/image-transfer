@@ -1,1 +1,0 @@
-Main-Class: image.transfer.client.ImageTransferClient
